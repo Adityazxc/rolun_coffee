@@ -1,45 +1,85 @@
+import { useEffect, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+
+const slides = [
+    {
+        image:
+            "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1600",
+    },
+    {
+        image:
+            "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600",
+    },
+    {
+        image:
+            "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600",
+    },
+];
+
 export default function Hero() {
+    const [current, setCurrent] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrent((prev) => (prev + 1) % slides.length);
+        }, 5000);
+
+        return () => clearInterval(interval);
+    }, []);
+
+    const nextSlide = () => {
+        setCurrent((prev) => (prev + 1) % slides.length);
+    };
+
+    const prevSlide = () => {
+        setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
+    };
+
     return (
-      <section className="min-h-screen bg-gradient-to-br from-amber-100 via-orange-50 to-white flex items-center">
-  
-        <div className="max-w-7xl mx-auto px-8">
-  
-          <h1 className="text-6xl font-bold text-amber-900 leading-tight">
-  
-            Reserve Your
-  
-            <br />
-  
-            Special Event
-  
-          </h1>
-  
-          <p className="mt-6 text-gray-600 max-w-xl text-lg">
-  
-            Celebrate unforgettable moments with premium coffee,
-            delicious food, and a cozy atmosphere perfect for
-            birthdays, meetings, gatherings, and private events.
-  
-          </p>
-  
-          <div className="mt-10 flex gap-5">
-  
-            <button className="bg-amber-900 text-white px-8 py-4 rounded-xl hover:bg-amber-800 transition">
-  
-              Reserve Now
-  
-            </button>
-  
-            <button className="border border-amber-900 px-8 py-4 rounded-xl hover:bg-amber-900 hover:text-white transition">
-  
-              View Packages
-  
-            </button>
-  
-          </div>
-  
-        </div>
-  
-      </section>
+        <section id="hero" className="bg-[#f8f5f2] py-16">
+            <div className="mx-auto max-w-7xl px-6">
+                <div className="relative overflow-hidden rounded-3xl shadow-2xl">
+                    {/* Background */}
+                    <img
+                        src={slides[current].image}
+                        alt=""
+                        className="h-auto w-full md:h-[550px] md:object-cover"
+                    />
+
+                    {/* Overlay */}
+                    <div className="absolute inset-0 bg-black/30" />
+
+                    {/* Tombol Previous */}
+                    <button
+                        onClick={prevSlide}
+                        className="absolute left-5 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/20 p-3 text-white backdrop-blur transition hover:bg-white/40"
+                    >
+                        <ChevronLeft size={28} />
+                    </button>
+
+                    {/* Tombol Next */}
+                    <button
+                        onClick={nextSlide}
+                        className="absolute right-5 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/20 p-3 text-white backdrop-blur transition hover:bg-white/40"
+                    >
+                        <ChevronRight size={28} />
+                    </button>
+
+                    {/* Indicator */}
+                    <div className="absolute bottom-8 left-1/2 z-20 flex -translate-x-1/2 gap-3">
+                        {slides.map((_, index) => (
+                            <button
+                                key={index}
+                                onClick={() => setCurrent(index)}
+                                className={`h-3 w-3 rounded-full transition ${current === index
+                                    ? "bg-white"
+                                    : "bg-white/40 hover:bg-white/70"
+                                    }`}
+                            />
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </section>
     );
-  }
+}

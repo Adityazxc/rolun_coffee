@@ -1,0 +1,58 @@
+# ============================================
+# Frontend (React + Vite)
+# ============================================
+
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/.env
+frontend/.env.local
+
+# Logs
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# ============================================
+# Backend (Laravel)
+# ============================================
+
+backend/vendor/
+backend/node_modules/
+
+backend/storage/logs/*
+backend/storage/framework/cache/*
+backend/storage/framework/sessions/*
+backend/storage/framework/views/*
+
+backend/bootstrap/cache/*
+
+backend/public/hot
+
+backend/.env
+backend/.env.*
+
+# Jangan ignore file contoh env
+!backend/.env.example
+
+# ============================================
+# IDE
+# ============================================
+
+.vscode/
+.idea/
+
+# ============================================
+# OS
+# ============================================
+
+.DS_Store
+Thumbs.db
+
+# ============================================
+# Temporary
+# ============================================
+
+*.log
+*.tmp
+*.swp
