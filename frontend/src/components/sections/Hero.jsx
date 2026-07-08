@@ -36,7 +36,7 @@ export default function Hero() {
     };
 
     return (
-        <section id="hero" className="bg-[#f8f5f2] py-16">
+        <section id="hero" className="bg-[var(--bg-clear)] py-16">
             <div className="mx-auto max-w-7xl px-6">
                 <div className="relative overflow-hidden rounded-3xl shadow-2xl">
                     {/* Background */}

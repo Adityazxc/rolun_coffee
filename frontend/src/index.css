@@ -16,6 +16,14 @@ a {
 }
 
 :root{
+  --rolun:#B49062;
+  --bg-rolun:#114a45;
+  --bg-clear:#F6F1E8;
+  --bg-clear2:#f8f5f2;
+  
+}
+
+/* :root{
   --rolun:#6F4E37;
   --bg-rolun:#014443;
-}
+} */
